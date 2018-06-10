@@ -2,11 +2,13 @@ Package: uxer
 Title: User Experience Research Functions
 Version: 0.0.0.9000
 Authors@R: person("Adam George", "Dunn", email = "agd1983@gmail.com", 
-  role = c("aut", "cre"))
+    role = c("aut", "cre"))
 Description: Helper functions related to user experience research.  Will
-  contain functions related to various common questionnaire scales, as well as
-  creating graphs that are used fairly often.
+    contain functions related to various common questionnaire scales, as well as
+    creating graphs that are used fairly often.
 Depends: R (>= 3.5.0)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+Imports:
+    tidyverse
