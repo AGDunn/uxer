@@ -12,3 +12,6 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     tidyverse
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
