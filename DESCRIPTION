@@ -13,5 +13,6 @@ LazyData: true
 Imports:
     tidyverse
 Suggests: knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr
