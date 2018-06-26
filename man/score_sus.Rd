@@ -4,17 +4,20 @@
 \alias{score_sus}
 \title{Calculate participants' SUS questionnaire scores}
 \usage{
-score_sus(myData, user_id = TRUE)
+score_sus(myData, user_id = TRUE, rescale = TRUE)
 }
 \arguments{
-\item{myData}{no default; data frame of questionnaire results; see example
+\item{myData}{no default; data frame of questionnaire results.  See example
 for naming convention expected.}
 
 \item{user_id}{default TRUE; does the data frame have a column for user ID?}
+
+\item{rescale}{default TRUE; transform main scale and subscales to 0-100
+range?}
 }
 \description{
-Calculate the SUS score per questionnaire participant.  At the
-moment, this function does not rescale to 0-100.
+Calculate the SUS score per questionnaire participant.  By default, will
+rescale it to 0-100 range.
 }
 \concept{questionnaire, scale
 score_sus()}
