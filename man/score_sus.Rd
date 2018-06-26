@@ -2,7 +2,7 @@
 % Please edit documentation in R/do_questionnaires.R
 \name{score_sus}
 \alias{score_sus}
-\title{Calculate participants' SUS questionnaire scores.}
+\title{Calculate participants' SUS questionnaire scores}
 \usage{
 score_sus(myData, user_id = TRUE)
 }

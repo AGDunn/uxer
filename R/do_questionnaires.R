@@ -10,9 +10,11 @@
 #   `Learnable' = 4, 10 [rescale factor = 12.5]
 # ###############################################################
 
-#' Calculate participants' SUS questionnaire scores.
-#' @description Calculate the SUS score per questionnaire participant.  At the
+#' Calculate participants' SUS questionnaire scores
+#' 
+#' Calculate the SUS score per questionnaire participant.  At the
 #' moment, this function does not rescale to 0-100.
+#'
 #' @param myData no default; data frame of questionnaire results; see example
 #'   for naming convention expected.
 #' @param user_id default TRUE; does the data frame have a column for user ID?
