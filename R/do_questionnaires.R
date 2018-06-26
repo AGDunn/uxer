@@ -3,6 +3,7 @@
 #  1/ add subscales
 # ADD KEYWORDS FIELD LATER
 #  4/ more sophisticated selection of returned columns
+#  5/ work out how to handle errors in data
 # ###############################################################
 # Lewis and Sauro (2009) have 2 subscales:
 #   `Usable' = 1, 2, 3, 5, 6, 7, 8, 9 [rescale factor = 3.125]
@@ -20,7 +21,7 @@
 #' @param rescale default TRUE; transform main scale and subscales to 0-100
 #'   range?
 #' @concept questionnaire, scale
-#' score_sus()
+#' @export
 score_sus <- function(myData, user_id=TRUE, rescale=TRUE){
   if (ncol(myData) == 10 + user_id){ # don't run if wrong number of columns
     if (rescale){

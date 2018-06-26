@@ -19,5 +19,4 @@ range?}
 Calculate the SUS score per questionnaire participant.  By default, will
 rescale it to 0-100 range.
 }
-\concept{questionnaire, scale
-score_sus()}
+\concept{questionnaire, scale}
