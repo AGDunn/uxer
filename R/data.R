@@ -10,3 +10,4 @@
 #'   \item{Q1 to Q10}{responses to standard SUS questions, range 1--5}
 #' }
 #' @source This is fictional data.
+"small_study"
