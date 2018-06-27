@@ -11,7 +11,8 @@
 #' Calculate participants' SUS questionnaire scores
 #' 
 #' Calculate the SUS score per questionnaire participant.  By default, will
-#' rescale it to 0-100 range.
+#'   rescale it to 0-100 range.  Also calculates the `usable' and `learnable'
+#'   subscales if asked to.
 #'
 #' @param myData no default; data frame of questionnaire results.  See example
 #'   for naming convention expected.
@@ -45,9 +46,11 @@ score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
            (Q1 - 1) + (5 - Q2) + (Q3 - 1) + (Q5 - 1) +
            (5 - Q6) + (Q7 - 1) + (5 - Q8) + (Q9 - 1),
          learnable = (5 - Q4) + (5 - Q10)
-       ) %>% select(usable, learnable, sus)  # ADD RESCALE HERE
+       ) %>% select(
+          usable * use_rescale, learnable * learn_rescale, sus * main_rescale
+         )
      } else {
-       holder <- holder %>% select(sus) # ADD RESCALE HERE
+       holder <- holder %>% select(sus * main_rescale)
 # SOLUTION PROBABLY add_column
      return(holder)
      }
