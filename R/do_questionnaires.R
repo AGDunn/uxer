@@ -57,7 +57,7 @@ score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
        holder <- holder %>% transmute(sus = sus * main_rescale)
      }
      if (user_id){
-       holder <- holder %>% add_column(id_list)
+       holder <- holder %>% add_column(id_list, .before=1)
      }
      return(holder)
   } else {
