@@ -6,8 +6,6 @@
 #  5/ work out how to handle errors in data
 # ###############################################################
 # Lewis and Sauro (2009) have 2 subscales:
-#   `Usable' = 1, 2, 3, 5, 6, 7, 8, 9 [rescale factor = 3.125]
-#   `Learnable' = 4, 10 [rescale factor = 12.5]
 # ###############################################################
 
 #' Calculate participants' SUS questionnaire scores
@@ -20,27 +18,39 @@
 #' @param user_id default TRUE; does the data frame have a column for user ID?
 #' @param rescale default TRUE; transform main scale and subscales to 0-100
 #'   range?
+#' @param default FALSE; calculate subscales `Usable' and `Learnable'?
 #' @concept questionnaire, scale
 #' @export
-score_sus <- function(myData, user_id=TRUE, rescale=TRUE){
+score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
   if (ncol(myData) == 10 + user_id){ # don't run if wrong number of columns
     if (rescale){
       main_rescale = 2.5; use_rescale = 3.125; learn_rescale = 12.5
     } else {
       main_rescale = 1; use_rescale = 1; learn_rescale = 1
     }
-    myData <- myData %>% mutate(sus= 
-       (Q1 - 1) + (5 - Q2) +
-       (Q3 - 1) + (5 - Q4) +
-       (Q5 - 1) + (5 - Q6) +
-       (Q7 - 1) + (5 - Q8) +
-       (Q9 - 1) + (5 - Q10)
-     ) %>% mutate(sus=sus * main_rescale)
-     if (user_id){
-       return(myData %>% select(participant, sus))
+    if (user_id) {
+      id_list <- myData %>% pull(participants)
+    }
+    holder <- myData %>% mutate(
+       sus = 
+         (Q1 - 1) + (5 - Q2) +
+         (Q3 - 1) + (5 - Q4) +
+         (Q5 - 1) + (5 - Q6) +
+         (Q7 - 1) + (5 - Q8) +
+         (Q9 - 1) + (5 - Q10)
+     ) 
+     if (subscales){
+       holder <- holder %>% mutate(
+         usable =
+           (Q1 - 1) + (5 - Q2) + (Q3 - 1) + (Q5 - 1) +
+           (5 - Q6) + (Q7 - 1) + (5 - Q8) + (Q9 - 1),
+         learnable = (5 - Q4) + (5 - Q10)
+       ) %>% select(usable, learnable, sus)  # ADD RESCALE HERE
      } else {
-       return(myData %>% select(sus))
-     }  
+       holder <- holder %>% select(sus) # ADD RESCALE HERE
+# SOLUTION PROBABLY add_column
+     return(holder)
+     }
   } else {
    print("wrong number of columns in data")
   }
