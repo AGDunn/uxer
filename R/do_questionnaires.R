@@ -30,7 +30,7 @@ score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
       main_rescale = 1; use_rescale = 1; learn_rescale = 1
     }
     if (user_id){
-      id_list <- myData %>% pull(participants)
+      id_list <- myData %>% pull(participant)
     }
     holder <- myData %>% mutate(
        sus = 
