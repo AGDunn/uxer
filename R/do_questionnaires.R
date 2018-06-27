@@ -29,7 +29,7 @@ score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
     } else {
       main_rescale = 1; use_rescale = 1; learn_rescale = 1
     }
-    if (user_id) {
+    if (user_id){
       id_list <- myData %>% pull(participants)
     }
     holder <- myData %>% mutate(
@@ -51,7 +51,9 @@ score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
          )
      } else {
        holder <- holder %>% select(sus * main_rescale)
-# SOLUTION PROBABLY add_column
+     if (user_id){
+       holder <- holder %>% add_column(id_list)
+     }
      return(holder)
      }
   } else {
