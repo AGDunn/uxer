@@ -25,6 +25,7 @@
 #' @export
 score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
   if (ncol(myData) == 10 + user_id){ # don't run if wrong number of columns
+    myData <- as_tibble(myData)
     if (rescale){
       main_rescale = 2.5; use_rescale = 3.125; learn_rescale = 12.5
     } else {
@@ -59,7 +60,6 @@ score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
        holder <- holder %>% add_column(id_list)
      }
      return(holder)
-     }
   } else {
    print("wrong number of columns in data")
   }
