@@ -2,6 +2,7 @@
 # TODO BEFORE RUNNING DOCUMENTATION:
 #  1/ add subscales
 # ADD KEYWORDS FIELD LATER
+#  2/ option to retain or drop original answer scores in output of score_sus()
 #  4/ more sophisticated selection of returned columns
 #  5/ work out how to handle errors in data
 # ###############################################################
@@ -46,11 +47,14 @@ score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
            (Q1 - 1) + (5 - Q2) + (Q3 - 1) + (Q5 - 1) +
            (5 - Q6) + (Q7 - 1) + (5 - Q8) + (Q9 - 1),
          learnable = (5 - Q4) + (5 - Q10)
-       ) %>% select(
-          usable * use_rescale, learnable * learn_rescale, sus * main_rescale
+       ) %>% transmute(
+          usable = usable * use_rescale,
+          learnable = learnable * learn_rescale,
+          sus = sus * main_rescale
          )
      } else {
-       holder <- holder %>% select(sus * main_rescale)
+       holder <- holder %>% transmute(sus = sus * main_rescale)
+     }
      if (user_id){
        holder <- holder %>% add_column(id_list)
      }
