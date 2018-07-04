@@ -1,14 +1,3 @@
-# ###############################################################
-# TODO BEFORE RUNNING DOCUMENTATION:
-#  1/ add subscales
-# ADD KEYWORDS FIELD LATER
-#  2/ option to retain or drop original answer scores in output of score_sus()
-#  4/ more sophisticated selection of returned columns
-#  5/ work out how to handle errors in data
-# ###############################################################
-# Lewis and Sauro (2009) have 2 subscales:
-# ###############################################################
-
 #' Calculate participants' SUS questionnaire scores
 #' 
 #' Calculate the SUS score per questionnaire participant.  By default, will
@@ -22,6 +11,7 @@
 #'   range?
 #' @param default FALSE; calculate subscales `Usable' and `Learnable'?
 #' @concept questionnaire, scale
+#' @references there should be a reference here
 #' @export
 score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
   if (ncol(myData) == 10 + user_id){ # don't run if wrong number of columns
@@ -65,6 +55,19 @@ score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
   }
 }
 
+#' Calculate participants' scores on technology acceptance model
+#'
+#' Calculate participants' scores on full technology acceptance model.
+#' 
+#' @concept questionnaire, scale
+#' @references Davis, Fred D. (1989) ``Perceived Usefulness, Perceived Ease
+#'   of Use, and User Acceptance of Information'' \emph{MIS Quarterly} 13 (3)
+#' @export
+score_tam <- function(myData){
+}
+
+# 00000000000000000000000000000000000000000000000000000000000000000000000000000
 # once a few been done, make an overall wrapper for them
 # score_responses()
+# 00000000000000000000000000000000000000000000000000000000000000000000000000000
 

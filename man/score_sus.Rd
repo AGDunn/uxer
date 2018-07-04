@@ -22,4 +22,7 @@ Calculate the SUS score per questionnaire participant.  By default, will
   rescale it to 0-100 range.  Also calculates the `usable' and `learnable'
   subscales if asked to.
 }
+\references{
+there should be a reference here
+}
 \concept{questionnaire, scale}
