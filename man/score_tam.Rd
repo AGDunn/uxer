@@ -4,10 +4,21 @@
 \alias{score_tam}
 \title{Calculate participants' scores on technology acceptance model}
 \usage{
-score_tam(myData)
+score_tam(myData, user_id = TRUE)
+}
+\arguments{
+\item{myData}{a data frame with (optional) participant ID,
+then (mandatory) usefulness scale questions followed by
+(mandatory) ease-of-use scale questions.}
+
+\item{user_id}{boolean for presence or absence of user ID column as first
+column.}
 }
 \description{
-Calculate participants' scores on full technology acceptance model.
+Calculate participants' scores on full technology acceptance model.  There
+  are two subscales: `perceived usefulness' and `perceived ease of use'.
+  Currently assumes participant ID, then usefulness scale, then ease scale.
+  It's based just off the original paper and no later extensions (yet).
 }
 \references{
 Davis, Fred D. (1989) ``Perceived Usefulness, Perceived Ease
