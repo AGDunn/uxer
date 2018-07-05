@@ -68,17 +68,21 @@ score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
 #'   (mandatory) ease-of-use scale questions.
 #' @param user_id boolean for presence or absence of user ID column as first
 #'   column.
+#' @param usef_start left-most column of usefulness scale, default is 1 
+#'   higher than user_id.
+#' @param ease_start left-most column of ease-of-use scale, default is 7 higher
+#'   than user_id.
 #' @concept questionnaire, scale
 #' @references Davis, Fred D. (1989) ``Perceived Usefulness, Perceived Ease
 #'   of Use, and User Acceptance of Information'' \emph{MIS Quarterly} 13 (3)
 #' @export
-score_tam <- function(myData, user_id=TRUE){
-  # coerce to tibble in case it matters
+score_tam <- function(myData, user_id=TRUE,
+  usef_start=user_id+1, ease_start=user_id+7){
+
+  # coerce to tibble, for the sake of pull()
   myData <- as_tibble(myData)
   
   # rename variables for sake of later selection
-  usef_start <- user_id + 1
-  ease_start <- user_id + 7
   names(myData)[usef_start:(usef_start + 5)] <- 
     c("u1", "u2", "u3", "u4", "u5", "u6")
   names(myData)[ease_start:(ease_start + 5)] <- 

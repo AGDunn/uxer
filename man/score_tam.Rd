@@ -4,7 +4,8 @@
 \alias{score_tam}
 \title{Calculate participants' scores on technology acceptance model}
 \usage{
-score_tam(myData, user_id = TRUE)
+score_tam(myData, user_id = TRUE, usef_start = user_id + 1,
+  ease_start = user_id + 7)
 }
 \arguments{
 \item{myData}{a data frame with (optional) participant ID,
@@ -13,6 +14,12 @@ then (mandatory) usefulness scale questions followed by
 
 \item{user_id}{boolean for presence or absence of user ID column as first
 column.}
+
+\item{usef_start}{left-most column of usefulness scale, default is 1 
+higher than user_id.}
+
+\item{ease_start}{left-most column of ease-of-use scale, default is 7 higher
+than user_id.}
 }
 \description{
 Calculate participants' scores on full technology acceptance model.  There
