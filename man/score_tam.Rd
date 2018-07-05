@@ -17,7 +17,8 @@ column.}
 \description{
 Calculate participants' scores on full technology acceptance model.  There
   are two subscales: `perceived usefulness' and `perceived ease of use'.
-  Currently assumes participant ID, then usefulness scale, then ease scale.
+  Currently assumes participant ID is first column (if present),
+  then usefulness scale, then ease scale.
   It's based just off the original paper and no later extensions (yet).
 }
 \references{

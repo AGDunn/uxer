@@ -59,7 +59,8 @@ score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
 #'
 #' Calculate participants' scores on full technology acceptance model.  There
 #'   are two subscales: `perceived usefulness' and `perceived ease of use'.
-#'   Currently assumes participant ID, then usefulness scale, then ease scale.
+#'   Currently assumes participant ID is first column (if present),
+#'   then usefulness scale, then ease scale.
 #'   It's based just off the original paper and no later extensions (yet).
 #'
 #' @param myData a data frame with (optional) participant ID,
@@ -83,6 +84,7 @@ score_tam <- function(myData, user_id=TRUE){
   names(myData)[ease_start:(ease_start + 5)] <- 
     c("e1", "e2", "e3", "e4", "e5", "e6")
   
+  # calculate the scale results
   output_holder <- myData %>% mutate(
     usefulness = u1 + u2 + u3 + u4 + u5 + u6,
     ease = e1 + e2 + e3 + e4 + e5 + e6
