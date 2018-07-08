@@ -4,12 +4,13 @@
 #'   rescale it to 0-100 range.  Also calculates the `usable' and `learnable'
 #'   subscales if asked to.
 #'
-#' @param myData no default; data frame of questionnaire results.  See example
+#' @param myData no default.  Data frame of questionnaire results.  See example
 #'   for naming convention expected.
-#' @param user_id default TRUE; does the data frame have a column for user ID?
-#' @param rescale default TRUE; transform main scale and subscales to 0-100
+#' @param user_id default TRUE.  Does the data frame have a column for user ID?
+#' @param rescale default TRUE.  Transform main scale and subscales to 0-100
 #'   range?
-#' @param default FALSE; calculate subscales `Usable' and `Learnable'?
+#' @param subscales default FALSE.  Calculate subscales
+#'   `Usable' and `Learnable'?
 #' @concept questionnaire, scale
 #' @references there should be a reference here
 #' @export

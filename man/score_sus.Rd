@@ -15,7 +15,7 @@ for naming convention expected.}
 \item{rescale}{default TRUE; transform main scale and subscales to 0-100
 range?}
 
-\item{default}{FALSE; calculate subscales `Usable' and `Learnable'?}
+\item{subscales}{default FALSE; calculate subscales `Usable' and `Learnable'?}
 }
 \description{
 Calculate the SUS score per questionnaire participant.  By default, will
