@@ -106,3 +106,110 @@ score_tam <- function(myData, user_id=TRUE,
 # score_responses()
 # 00000000000000000000000000000000000000000000000000000000000000000000000000000
 
+#' Convert Likert items from text to number
+#'
+#' Returns an integer vector (1--5) if given text responses to Likert items.
+#' 
+#' Converts text responses to Likert items to integer responses.  Requires a
+#' character or factor vector as an input; maps this onto the 1-5 scale to
+#' create the output vector.  Will work for 5- and 4-point Likert items.
+#' 
+#' @param vector_in vector of responses to Likert item; default NULL.
+#'   should be factor or (ideally) character.  Using a factor vector will
+#'   return a message but will still work; any other type except characters
+#'   will halt with an error.
+#' @param text_finish logical; default FALSE.  If TRUE, will return abbreviated
+#'   text instead of integers.  Not yet implemented.
+#' @param exclude_middle logical; default FALSE.  Set to TRUE if working with
+#'   a 4-point Likert item.  
+#' @param full_caution logical; default FALSE.  If TRUE, will halt and throw an
+#'   an error if there's any values that can't be converted.
+#' @return integer vector 
+#' @importFrom dplyr case_when
+#' @importFrom magrittr %>%
+#' @importFrom stringr str_squish
+#' @importFrom stringr str_to_lower
+clean_likert <- function(vector_in = NULL,
+                         text_finish = FALSE,
+                         exclude_middle = FALSE,
+                         full_caution = FALSE,
+                        ){
+
+  # check the input object is the right kind and fix if possible --------------
+  # check there is an input object
+  if (is.null(vector_in)) {
+    stop("must give the function a character or factor vector to read")
+  }
+
+  # make sure input is a vector with is_vector()
+  if (!is_vector(vector_in)) {
+    stop("this function needs a character or factor vector")
+  }
+  
+  # if factor, coerce to character
+  if (class(vector_in) == "factor") {
+    vector_in <- as.character(vector_in)
+    message("the input was a factor; this function can work\n ",
+      "but you might want to change the vector's class")
+  }
+  
+  # stop if the input class isn't character
+  if (!class(vector_in) == "character") {
+    stop("input must be a character or factor vector")
+  }
+  # ---------------------------------------------------------------------------
+
+  # standardize character strings ---------------------------------------------
+  # make strings lower-case and remove duplicated whitespace
+  vector_abbrev <- vector_in %>%
+    str_to_lower() %>%
+    str_squish()
+  
+  # abbreviate 
+  vector_abbrev <- case_when(
+    vector_abbrev == "strongly agree" ~ "SA",
+    vector_abbrev == "agree" ~ "A",
+    vector_abbrev == "neither agree nor disagree" ~ "NAD", 
+    vector_abbrev == "disagree" ~ "D", 
+    vector_abbrev == "strongly disagree" ~ "SD"
+  ) 
+  
+  # check how many failed to abbreviate
+  fault_count <- sum(is.na(vector_abbrev))
+  # ---------------------------------------------------------------------------
+
+  # if full_caution, stop on faults; else report count of faults --------------
+  if (fault_count > 0) {
+    # stop and report error count if full_caution TRUE
+    if (full_caution) {
+      stop("there were", fault_count, "failures to convert text;\n ",
+        "either fix the input or set full_caution to FALSE")
+    } else {
+      warning("there were", fault_count, "failures to convert text;\n ",
+        "you should check the input and output")
+    }
+  }
+  # ---------------------------------------------------------------------------
+
+
+  # convert characters to numbers ---------------------------------------------
+  # end: fully converted into numbers; turn oddities into NA.
+  vector_out <- case_when(
+    vec_abbrev == "SA"  ~ 5,
+    vec_abbrev == "A"   ~ 4,
+    vec_abbrev == "NAD" ~ 3,
+    vec_abbrev == "D"   ~ 2,
+    vec_abbrev == "SA"  ~ 1
+    # TRUE                ~ NA_real_ # it will NA unrecognised anyway
+  )
+  # ---------------------------------------------------------------------------
+
+  # print count of NA if > 0 --------------------------------------------------
+  if (sum(is.na(vector)) > 0) {
+    print(sum(is.na(vector)), "NAs produced")
+  }
+  # ---------------------------------------------------------------------------
+
+  # return vector_out, a numeric vector ---------------------------------------
+  return(vector_out)
+}
