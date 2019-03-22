@@ -12,6 +12,9 @@
 #' @param subscales default FALSE.  Calculate subscales
 #'   `Usable' and `Learnable'?
 #' @concept questionnaire, scale
+#' @importFrom dplyr mutate
+#' @importFrom dplyr pull
+#' @importFrom dplyr transmute
 #' @references there should be a reference here
 #' @export
 score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
@@ -76,6 +79,9 @@ score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
 #' @concept questionnaire, scale
 #' @references Davis, Fred D. (1989) ``Perceived Usefulness, Perceived Ease
 #'   of Use, and User Acceptance of Information'' \emph{MIS Quarterly} 13 (3)
+#' @importFrom dplyr pull
+#' @importFrom dplyr mutate
+#' @importFrom dplyr select
 #' @export
 score_tam <- function(myData, user_id=TRUE,
   usef_start=user_id+1, ease_start=user_id+7){
@@ -119,20 +125,21 @@ score_tam <- function(myData, user_id=TRUE,
 #'   return a message but will still work; any other type except characters
 #'   will halt with an error.
 #' @param text_finish logical; default FALSE.  If TRUE, will return abbreviated
-#'   text instead of integers.  Not yet implemented.
+#'   text instead of integers.  
 #' @param exclude_middle logical; default FALSE.  Set to TRUE if working with
-#'   a 4-point Likert item.  
+#'   a 4-point Likert item.  Not yet implemented.
 #' @param full_caution logical; default FALSE.  If TRUE, will halt and throw an
 #'   an error if there's any values that can't be converted.
 #' @return integer vector 
 #' @importFrom dplyr case_when
 #' @importFrom magrittr %>%
+#' @importFrom purrr is_vector
 #' @importFrom stringr str_squish
 #' @importFrom stringr str_to_lower
 clean_likert <- function(vector_in = NULL,
                          text_finish = FALSE,
                          exclude_middle = FALSE,
-                         full_caution = FALSE,
+                         full_caution = FALSE
                         ){
 
   # check the input object is the right kind and fix if possible --------------

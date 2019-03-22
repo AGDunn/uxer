@@ -7,7 +7,10 @@ Description: Helper functions related to user experience research.  Will
     contain functions related to various common questionnaire scales, as well as
     creating graphs that are used fairly often.
 Depends: R (>= 3.5.0),
-    tidyverse
+    dplyr,
+    magrittr,
+    purrr,
+    stringr
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
@@ -16,4 +19,4 @@ Suggests: knitr,
     rmarkdown,
     testthat
 VignetteBuilder: knitr
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.1.1

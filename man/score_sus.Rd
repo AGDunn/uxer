@@ -7,15 +7,16 @@
 score_sus(myData, user_id = TRUE, rescale = TRUE, subscales = FALSE)
 }
 \arguments{
-\item{myData}{no default; data frame of questionnaire results.  See example
+\item{myData}{no default.  Data frame of questionnaire results.  See example
 for naming convention expected.}
 
-\item{user_id}{default TRUE; does the data frame have a column for user ID?}
+\item{user_id}{default TRUE.  Does the data frame have a column for user ID?}
 
-\item{rescale}{default TRUE; transform main scale and subscales to 0-100
+\item{rescale}{default TRUE.  Transform main scale and subscales to 0-100
 range?}
 
-\item{subscales}{default FALSE; calculate subscales `Usable' and `Learnable'?}
+\item{subscales}{default FALSE.  Calculate subscales
+`Usable' and `Learnable'?}
 }
 \description{
 Calculate the SUS score per questionnaire participant.  By default, will
