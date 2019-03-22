@@ -2,6 +2,7 @@
 
 export(score_sus)
 export(score_tam)
+importFrom(dplyr,as_tibble)
 importFrom(dplyr,case_when)
 importFrom(dplyr,mutate)
 importFrom(dplyr,pull)
@@ -11,3 +12,4 @@ importFrom(magrittr,"%>%")
 importFrom(purrr,is_vector)
 importFrom(stringr,str_squish)
 importFrom(stringr,str_to_lower)
+importFrom(tibble,add_column)

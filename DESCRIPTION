@@ -10,7 +10,8 @@ Depends: R (>= 3.5.0),
     dplyr,
     magrittr,
     purrr,
-    stringr
+    stringr,
+    tibble
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true

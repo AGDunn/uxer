@@ -12,9 +12,11 @@
 #' @param subscales default FALSE.  Calculate subscales
 #'   `Usable' and `Learnable'?
 #' @concept questionnaire, scale
+#' @importFrom dplyr as_tibble
 #' @importFrom dplyr mutate
 #' @importFrom dplyr pull
 #' @importFrom dplyr transmute
+#' @importFrom tibble add_column
 #' @references there should be a reference here
 #' @export
 score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
@@ -79,9 +81,11 @@ score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
 #' @concept questionnaire, scale
 #' @references Davis, Fred D. (1989) ``Perceived Usefulness, Perceived Ease
 #'   of Use, and User Acceptance of Information'' \emph{MIS Quarterly} 13 (3)
+#' @importFrom dplyr as_tibble
 #' @importFrom dplyr pull
 #' @importFrom dplyr mutate
 #' @importFrom dplyr select
+#' @importFrom tibble add_column
 #' @export
 score_tam <- function(myData, user_id=TRUE,
   usef_start=user_id+1, ease_start=user_id+7){
