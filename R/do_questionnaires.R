@@ -17,7 +17,9 @@
 #' @importFrom dplyr pull
 #' @importFrom dplyr transmute
 #' @importFrom tibble add_column
-#' @references there should be a reference here
+#' @references Brooke (1996) in Sauro, Jeff and Lewis, James R. (2016)
+#'   \emph{Quantifying the User Experience} 2nd edn. Cambridge, MA:
+#'   Morgan Kaufmann, pp.198--199
 #' @export
 score_sus <- function(myData, user_id=TRUE, rescale=TRUE, subscales=FALSE){
   if (ncol(myData) == 10 + user_id){ # don't run if wrong number of columns

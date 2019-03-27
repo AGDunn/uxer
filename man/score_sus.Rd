@@ -24,6 +24,8 @@ Calculate the SUS score per questionnaire participant.  By default, will
   subscales if asked to.
 }
 \references{
-there should be a reference here
+Brooke (1996) in Sauro, Jeff and Lewis, James R. (2016)
+  \emph{Quantifying the User Experience} 2nd edn. Cambridge, MA:
+  Morgan Kaufmann, pp.198--199
 }
 \concept{questionnaire, scale}
