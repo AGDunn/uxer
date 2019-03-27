@@ -176,12 +176,15 @@ clean_likert <- function(vector_in = NULL,
     str_to_lower() %>%
     str_squish()
   
-  # abbreviate 
+  # abbreviate; note a couple of alternative wordings are in here
   vector_abbrev <- case_when(
     vector_abbrev == "strongly agree" ~ "SA",
+    vector_abbrev == "moderately agree" ~ "A",
     vector_abbrev == "agree" ~ "A",
     vector_abbrev == "neither agree nor disagree" ~ "NAD", 
+    vector_abbrev == "neutral" ~ "NAD",
     vector_abbrev == "disagree" ~ "D", 
+    vector_abbrev == "moderately disagree" ~ "D",
     vector_abbrev == "strongly disagree" ~ "SD"
   ) 
   
