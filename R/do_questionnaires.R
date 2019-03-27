@@ -113,11 +113,6 @@ score_tam <- function(myData, user_id=TRUE,
   return(output_holder)
 }
 
-# 00000000000000000000000000000000000000000000000000000000000000000000000000000
-# once a few been done, make an overall wrapper for them
-# score_responses()
-# 00000000000000000000000000000000000000000000000000000000000000000000000000000
-
 #' Convert Likert items from text to number
 #'
 #' Returns an integer vector (1--5) if given text responses to Likert items.
@@ -142,6 +137,7 @@ score_tam <- function(myData, user_id=TRUE,
 #' @importFrom purrr is_vector
 #' @importFrom stringr str_squish
 #' @importFrom stringr str_to_lower
+#' @export
 clean_likert <- function(vector_in = NULL,
                          text_finish = FALSE,
                          exclude_middle = FALSE,
