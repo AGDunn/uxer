@@ -1,13 +1,14 @@
-#' Responses to an SUS questionnaire.
+#' Responses to a (fictitious) SUS and TAM questionnaire
 #'
-#' 8 fictitious participants responded to a standard SUS questionnaire
-#' as part of usability testing a made-up software package.  Nothing 
-#' sophisticated was done to imagine up these data.
-#'
-#' @format A tibble of 8 rows and 11 variables.
+#' 20 participants answered standard questions from the SUS and TAM
+#' questionnaire instruments.  All the questions are 1--5 scored Likert items.
+#
+#' @format A tibble of 20 rows and 23 variables.
 #' \describe{
-#'   \item{participant}{ID variable for participant in study.}
-#'   \item{Q1 to Q10}{responses to standard SUS questions, range 1--5}
+#'   \item{id}{ID variable for participants in study.}
+#'   \item{ZZZq1 to q10}{responses to SUS questions.}
+#'   \item{ZZZq11 to q16}{responses to TAM usefulness subscale.}
+#'   \item{ZZZq17 to q22}{responses to TAM ease-of-use subscale.}
 #' }
-#' @source This is fictional data.
+#' @source Fictional data made using fellowr::fake_a_questionnaire()
 "small_study"
